@@ -1,22 +1,76 @@
-.App {
+.logo {
+  width: 6%;
+  height: 31px;
+  background: rgba(255, 255, 255, .2);
+  /* margin: 16px 28px 16px 0; */
+  float: left;
+}
+
+.certain-category-search.ant-select-auto-complete .ant-input-affix-wrapper .ant-input-suffix {
+  right: 12px;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item-group-title {
+  color: #666;
+  font-weight: bold;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item-group {
+  border-bottom: 1px solid #F6F6F6;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item {
+  padding-left: 16px;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item.show-all {
   text-align: center;
+  cursor: default;
 }
 
-.App-logo {
-  height: 40vmin;
+.certain-category-search-dropdown .ant-select-dropdown-menu {
+  max-height: 300px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.certain-search-item-count {
+  position: absolute;
+  color: #999;
+  right: 16px;
 }
 
-.App-link {
-  color: #09d3ac;
+.certain-category-search.ant-select-focused .certain-category-icon {
+  color: #108ee9;
+}
+
+.certain-category-icon {
+  color: #6E6E6E;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  font-size: 16px;
+}
+
+.certain-category-search-wrapper {
+  width: 380%;
+}
+
+@media(max-width:1200px) {
+  .certain-category-search-wrapper {
+      width: 100%;
+      flex: none;
+  }
+}
+
+
+.demo-infinite-container {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 8px 24px;
+  height: 300px;
+}
+
+.demo-loading-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
 }

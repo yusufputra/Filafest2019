@@ -1,26 +1,189 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import { Layout, Menu, Breadcrumb, Icon } from "antd";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import ReactModal from "react-modal";
+import "./App.css";
+import "antd/dist/antd.css";
+import FormLoginComponent from "./component/FormLogin";
+import Landing from "./page/landing";
+import ButtonGroup from "antd/lib/button/button-group";
+import { AutoComplete, Input, Button, Popover } from "antd";
+import UserProvider, { UserContext } from "./UserProvider";
+export const AppContext = React.createContext();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <UserContext.Consumer>
+        {context => <AppChildren context={context} />}
+      </UserContext.Consumer>
+    </UserProvider>
   );
+}
+
+class AppChildren extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      success: true,
+      trigger: () => {
+        this.setState({ success: !this.state.success });
+      },
+      visible: false,
+      username: undefined,
+      dataSource: []
+    };
+  }
+  componentDidMount = async () => {
+	this.props.context.checkLogin();
+  };
+  popOver() {
+    return (
+      <Fragment>
+        <Link to="/profile">
+          <div>{"TiketKu"}</div>
+        </Link>
+        <Link>
+          <div>
+            <a onClick={this.logOut}>{"Keluar akun"}</a>
+          </div>
+        </Link>
+      </Fragment>
+    );
+  }
+  renderButton() {
+    console.log(this.props.context);
+    if (this.props.context.loggedIn) {
+      return (
+        <ButtonGroup style={{ float: "right" }}>
+          <Popover
+            placement="bottomRight"
+            content={this.popOver()}
+            title={`Halo, ${this.props.context.nama}`}
+            trigger="hover"
+          >
+            <Button>{this.props.context.nama}</Button>
+          </Popover>
+        </ButtonGroup>
+      );
+    }
+    return (
+      <ButtonGroup style={{ float: "right" }}>
+        <Button
+          onClick={this.showModal}
+          style={{
+            borderRadius: "20px",
+            backgroundColor: "red",
+            color: "white",
+            fontWeight: "bold"
+          }}
+        >
+          {"Masuk"}
+        </Button>
+      </ButtonGroup>
+    );
+  }
+  handleCancel = e => {
+    this.setState({
+      visible: false
+    });
+  };
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+  logOut = () => {
+    localStorage.clear();
+    window.location.replace("/");
+  };
+  handleOk = e => {
+    //login process here
+    this.setState({
+      visible: false
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Layout>
+            <Layout.Header
+              style={{ backgroundColor: "white" }}
+              className="header"
+            >
+              <Link to="/">
+                <div className="logo">
+                  <img src="/asset/LogoBertulis.svg" width="90em" />
+                </div>
+              </Link>
+
+              <Menu
+                theme={"light"}
+                mode={"horizontal"}
+                style={{ lineHeight: "64px", float: "right", color: "red" }}
+              >
+                <Menu.Item key="Informasi">Informasi</Menu.Item>
+                <Menu.Item key="Tiket">Tiket</Menu.Item>
+                <Menu.Item key="Profil">Profil Filafest</Menu.Item>
+                {this.renderButton()}
+              </Menu>
+            </Layout.Header>
+
+            <ReactModal
+              isOpen={this.state.visible}
+              contentLabel="Login"
+              shouldFocusAfterRender={true}
+              shouldCloseOnOverlayClick={false}
+              shouldCloseOnEsc={true}
+              shouldReturnFocusAfterClose={true}
+              onRequestClose={this.handleCancel}
+              style={{
+                overlay: {
+                  backgroundColor: "rgba(0,0,0,0.7)"
+                },
+                content: {
+                  borderRadius: "8px",
+                  bottom: "auto",
+                  minHeight: "10rem",
+                  left: "50%",
+                  paddingTop: "0.4rem",
+                  paddingLeft: "2rem",
+                  paddingBottom: "2rem",
+                  paddingRight: "2rem",
+                  position: "fixed",
+                  right: "auto",
+                  top: "50%",
+                  transform: "translate(-50%,-50%)",
+                  minWidth: "20rem",
+                  width: "30%",
+                  maxWidth: "30rem"
+                }
+              }}
+            >
+              <a onClick={this.handleCancel} style={{ marginLeft: "100%" }}>
+                <Icon
+                  type="close-circle"
+                  style={{ fontSize: 25, color: "red" }}
+                />
+              </a>
+              <FormLoginComponent />
+            </ReactModal>
+
+            <Layout.Content>
+              <Switch>
+                <Route exact path="/" component={Landing} />
+              </Switch>
+            </Layout.Content>
+            <Layout.Footer style={{ textAlign: "center" }}>
+              {"Developed with <3 by us"}
+            </Layout.Footer>
+          </Layout>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
