@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { HashRouter, Route, Switch, Link } from "react-router-dom";
 import ReactModal from "react-modal";
 import "./App.css";
 import "antd/dist/antd.css";
@@ -9,6 +9,10 @@ import Landing from "./page/landing";
 import ButtonGroup from "antd/lib/button/button-group";
 import { AutoComplete, Input, Button, Popover } from "antd";
 import UserProvider, { UserContext } from "./UserProvider";
+import Tiket from "./page/tiket";
+import Tiiketku from "./page/tiketku";
+import News from "./page/news";
+import Barcode from "./page/barcode";
 export const AppContext = React.createContext();
 
 function App() {
@@ -35,12 +39,12 @@ class AppChildren extends React.PureComponent {
     };
   }
   componentDidMount = async () => {
-	this.props.context.checkLogin();
+    this.props.context.checkLogin();
   };
   popOver() {
     return (
       <Fragment>
-        <Link to="/profile">
+        <Link to="/myTicket">
           <div>{"TiketKu"}</div>
         </Link>
         <Link>
@@ -107,15 +111,21 @@ class AppChildren extends React.PureComponent {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
+        <HashRouter>
           <Layout>
             <Layout.Header
-              style={{ backgroundColor: "white" }}
+              style={{
+                backgroundColor: "white",
+                position: "fixed",
+                width: "100%",
+                zIndex: "200",
+                height: "auto"
+              }}
               className="header"
             >
               <Link to="/">
                 <div className="logo">
-                  <img src="/asset/LogoBertulis.svg" width="90em" />
+                  <img src="./asset/LogoBertulis.svg" width="90em" />
                 </div>
               </Link>
 
@@ -124,8 +134,22 @@ class AppChildren extends React.PureComponent {
                 mode={"horizontal"}
                 style={{ lineHeight: "64px", float: "right", color: "red" }}
               >
-                <Menu.Item key="Informasi">Informasi</Menu.Item>
-                <Menu.Item key="Tiket">Tiket</Menu.Item>
+                <Menu.Item
+                  key="Informasi"
+                  onClick={() => {
+                    window.location.href = "#/news";
+                  }}
+                >
+                  Informasi
+                </Menu.Item>
+                <Menu.Item
+                  key="Tiket"
+                  onClick={() => {
+                    window.location.href = "#/chooseTicket";
+                  }}
+                >
+                  Tiket
+                </Menu.Item>
                 <Menu.Item key="Profil">Profil Filafest</Menu.Item>
                 {this.renderButton()}
               </Menu>
@@ -174,13 +198,21 @@ class AppChildren extends React.PureComponent {
             <Layout.Content>
               <Switch>
                 <Route exact path="/" component={Landing} />
+                <Route path="/chooseTicket" component={Tiket} />
+                <Route path="/myTicket" component={Tiiketku} />
+                <Route path="/news" component={News} />
+                <Route
+                  path="/generateBarcode"
+                  component={Barcode}
+                  context={this.props.context}
+                />
               </Switch>
             </Layout.Content>
             <Layout.Footer style={{ textAlign: "center" }}>
               {"Developed with <3 by us"}
             </Layout.Footer>
           </Layout>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }

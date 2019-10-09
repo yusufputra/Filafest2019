@@ -9,7 +9,7 @@
 }
 
 .slider-font{
-  position: absolute;
+  position: sticky;
   color: white;
   z-index: 2;
   left: 50%;
