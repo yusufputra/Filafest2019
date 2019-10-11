@@ -12,11 +12,11 @@ export default class Tiket extends Component {
               textAlign: "center",
               color: "red",
               fontSize: "xx-large",
-              textDecoration: "underline"
             }}
           >
             Choose Ticket
           </h1>
+          <hr style={{border: "1px solid red", width:150,marginTop:"-10px"}}/>
         </Row>
         <Row
           style={{
