@@ -13,6 +13,8 @@ import Tiket from "./page/tiket";
 import Tiiketku from "./page/tiketku";
 import News from "./page/news";
 import Barcode from "./page/barcode";
+import Profile from "./page/profile";
+import ConfirmTicket from "./page/confirmTicket";
 export const AppContext = React.createContext();
 
 function App() {
@@ -150,7 +152,14 @@ class AppChildren extends React.PureComponent {
                 >
                   Tiket
                 </Menu.Item>
-                <Menu.Item key="Profil">Profil Filafest</Menu.Item>
+                <Menu.Item
+                  key="Profil"
+                  onClick={() => {
+                    window.location.href = "#/profile";
+                  }}
+                >
+                  Profil Filafest
+                </Menu.Item>
                 {this.renderButton()}
               </Menu>
             </Layout.Header>
@@ -200,7 +209,9 @@ class AppChildren extends React.PureComponent {
                 <Route exact path="/" component={Landing} />
                 <Route path="/chooseTicket" component={Tiket} />
                 <Route path="/myTicket" component={Tiiketku} />
+                <Route path="/profile" component={Profile} />
                 <Route path="/news" component={News} />
+                <Route path="/confirmTicket" component={ConfirmTicket} />
                 <Route
                   path="/generateBarcode"
                   component={Barcode}

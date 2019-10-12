@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Layout, Carousel, Row, Col, Button, Card } from "antd";
+import { Link } from "react-router-dom";
 
 export default class Tiket extends Component {
   render() {
@@ -11,21 +12,17 @@ export default class Tiket extends Component {
             style={{
               textAlign: "center",
               color: "red",
-              fontSize: "xx-large",
+              fontSize: "xx-large"
             }}
           >
             Choose Ticket
           </h1>
-          <hr style={{border: "1px solid red", width:150,marginTop:"-10px"}}/>
+          <hr
+            style={{ border: "1px solid red", width: 150, marginTop: "-10px" }}
+          />
         </Row>
-        <Row
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "row"
-          }}
-        >
-          <Col xs={{ span: 5, offset: 1 }} lg={{ span: 5, offset: 1 }}>
+        <Row type="flex" justify="center" gutter={16}>
+          <Col xs={{ span: 16 }} lg={{ span: 6, offset: 2 }}>
             <Card
               hoverable
               style={{ width: 300 }}
@@ -42,24 +39,27 @@ export default class Tiket extends Component {
                       flexDirection: "row"
                     }}
                   >
+                    <Link to={"/confirmTicket"}>
                     <Button
-                      onClick={this.showModal}
-                      style={{
-                        borderRadius: "20px",
-                        backgroundColor: "red",
-                        color: "white",
-                        fontWeight: "bold",
-                        float: "right"
+                      type={'danger'}
+                      
+                      onClick={()=>{
+                        localStorage.kind = 'jalansehat2019'
                       }}
-                    >
-                      {"Cetak Tiket"}
-                    </Button>
+                        style={{
+                          borderRadius: "20px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {"Get Ticket"}
+                      </Button>
+                    </Link>
                   </div>
                 }
               />
             </Card>
           </Col>
-          <Col xs={{ span: 5, offset: 1 }} lg={{ span: 5, offset: 1 }}>
+          <Col xs={{ span: 16 }} lg={{ span: 6 }}>
             <Card
               hoverable
               style={{ width: 300 }}
@@ -76,18 +76,21 @@ export default class Tiket extends Component {
                       flexDirection: "row"
                     }}
                   >
-                    <Button
-                      onClick={this.showModal}
-                      style={{
-                        borderRadius: "20px",
-                        backgroundColor: "red",
-                        color: "white",
-                        fontWeight: "bold",
-                        float: "right"
+                    <Link to={"/confirmTicket"}>
+                      <Button
+                      type={'danger'}
+                      disabled
+                      onClick={()=>{
+                        localStorage.kind = 'malampuncak2019'
                       }}
-                    >
-                      {"Cetak Tiket"}
-                    </Button>
+                        style={{
+                          borderRadius: "20px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {"Coming Soon"}
+                      </Button>
+                    </Link>
                   </div>
                 }
               />
