@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React  from "react";
 import { Layout, Row, message, Button, Alert, Col } from "antd";
 import { UserContext } from "../UserProvider";
 import Axios from "axios";

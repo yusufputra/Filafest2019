@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Layout, Row, Col, Button, Card, List, Typography } from "antd";
-import QRCode from "qrcode-react";
+import QRCode from 'qrcode.react';
 import { UserContext } from "../UserProvider";
 
 export default class Barcode extends Component {
@@ -15,6 +15,7 @@ export default class Barcode extends Component {
             jenis : localStorage.kind,
             nim : context.nim
           }
+          console.log(data)
           return (
             <Layout>
               <Row style={{ padding: "75px 50px" }}>
@@ -34,7 +35,7 @@ export default class Barcode extends Component {
                     textAlign: "center"
                   }}
                 >
-                  <QRCode value={data} />
+                  <QRCode value={JSON.stringify(data)} renderAs={'svg'} level={"Q"} />
                 </div>
               </Row>
             </Layout>
