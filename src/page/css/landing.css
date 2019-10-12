@@ -12,7 +12,7 @@
   position: relative;
 }
 
-.slider-font{
+.slider-font {
   text-align: center;
   position: absolute;
   color: white;
@@ -23,4 +23,91 @@
   -webkit-transform: translate(-50%);
   -moz-transform: translate(-50%);
   -o-transform: translate(-50%);
+}
+
+.img-sehat {
+  width: 80%;
+  float: right;
+  border-radius: 7.5%;
+}
+.img-puncak {
+  width: 80%;
+  float: left;
+  border-radius: 7.5%;
+}
+
+.btn-sehat {
+  margin-top: 10px;
+  border-radius: 20px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  float: left;
+}
+.btn-puncak {
+  margin-top: 10px;
+  border-radius: 20px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  float: right;
+}
+.title-sehat {
+  font-size: xx-large;
+}
+.isi-sehat {
+  width: 80%;
+}
+.title-puncak {
+  font-size: xx-large;
+  float: right;
+  text-align: right;
+}
+.isi-puncak {
+  float: right;
+  width: 80%;
+}
+@media (max-width: 500px) {
+  .img-sehat {
+    width: 80%;
+    margin-right: 10%;
+    border-radius: 7.5%;
+  }
+  .img-puncak {
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 7.5%;
+  }
+  .btn-sehat {
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    margin: 20%;
+  }
+  .title-sehat {
+    font-size: x-large;
+    text-align: center;
+  }
+  .isi-sehat {
+    text-align: center;
+    width: 100%;
+  }
+  .title-puncak {
+    font-size: x-large;
+    text-align: center;
+  }
+  .isi-puncak {
+    text-align: center;
+    width: 100%;
+  }
+  .btn-puncak {
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    margin: 20%;
+  }
 }

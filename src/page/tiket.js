@@ -25,7 +25,6 @@ export default class Tiket extends Component {
           <Col xs={{ span: 16 }} lg={{ span: 6, offset: 2 }}>
             <Card
               hoverable
-              style={{ width: 300 }}
               cover={<img alt="example" src="./asset/slider1.JPG" />}
             >
               <Meta
@@ -62,7 +61,6 @@ export default class Tiket extends Component {
           <Col xs={{ span: 16 }} lg={{ span: 6 }}>
             <Card
               hoverable
-              style={{ width: 300 }}
               cover={<img alt="example" src="./asset/slider3.JPG" />}
             >
               <Meta

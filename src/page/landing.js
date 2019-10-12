@@ -60,19 +60,16 @@ export default class Landing extends Component {
             style={{ border: "1px solid red", width: 150, marginTop: "-8px" }}
           />
         </Row>
-        <Row style={{ padding: "0 50px", marginBottom: "25px" }}>
-          <Col span={12} style={{ padding: "0px 5px" }}>
-            <Img
-              src="./asset/slider1.JPG"
-              style={{ width: "80%", float: "right", borderRadius: "7.5%" }}
-            />
+        <Row
+          style={{ padding: "0 50px", marginBottom: "25px" }}
+          gutter={24}
+          justify="center"
+        >
+          <Col lg={12} style={{ padding: "0px 5px" }}>
+            <Img src="./asset/slider1.JPG" className="img-sehat" />
           </Col>
-          <Col span={12} style={{ padding: "0px 30px" }}>
-            <h1
-              style={{
-                fontSize: "xx-large"
-              }}
-            >
+          <Col lg={12} style={{ padding: "0px 30px" }}>
+            <h1 className="title-sehat">
               <div style={{ color: "red", margin: 0, padding: 0 }}>
                 JALAN SEHAT
               </div>
@@ -87,7 +84,7 @@ export default class Landing extends Component {
                 20 November 2019
               </div>
             </h1>
-            <div style={{ width: "80%" }}>
+            <div className="isi-sehat">
               Jalan Sehat adalah rangkaian pertama FILAFEST yang diikuti oleh
               seluruh civitas yang ada di FILKOM. Jalan sehat ini merupakan
               acara jalan bersama mengintari wilayah Universitas Brawijaya dan
@@ -98,48 +95,29 @@ export default class Landing extends Component {
             </div>
             <br />
             <Link to={"/chooseTicket"}>
-              <Button
-
-                style={{
-                  marginTop: "10px",
-                  borderRadius: "20px",
-                  backgroundColor: "red",
-                  color: "white",
-                  fontWeight: "bold",
-                  float: "left"
-                }}
-              >
-                {"Cetak Tiket"}
-              </Button>
+              <Button className="btn-sehat">{"Cetak Tiket"}</Button>
             </Link>
           </Col>
         </Row>
-        <Row style={{ padding: "0 50px" }} justify="center">
-          <Col span={12} style={{ padding: "0px 30px" }}>
+        <Row style={{ padding: "0 50px" }} justify="center" gutter={24}>
+          <Col lg={12} style={{ padding: "0px 30px" }}>
             <Row>
-              <div style={{ width: "100%" }}>
-                <h1
+              <h1 className="title-puncak">
+                <div style={{ color: "red", margin: 0, padding: 0 }}>
+                  Malam Puncak
+                </div>
+                <div
                   style={{
-                    fontSize: "xx-large",
-                    float: "right"
+                    color: "#FFA200",
+                    margin: 0,
+                    padding: 0,
+                    marginTop: "-12.5px"
                   }}
                 >
-                  <div style={{ color: "red", margin: 0, padding: 0 }}>
-                    Malam Puncak
-                  </div>
-                  <div
-                    style={{
-                      color: "#FFA200",
-                      margin: 0,
-                      padding: 0,
-                      marginTop: "-12.5px"
-                    }}
-                  >
-                    1 Desember 2019
-                  </div>
-                </h1>
-              </div>
-              <div style={{ float: "right", width: "80%" }}>
+                  1 Desember 2019
+                </div>
+              </h1>
+              <div className="isi-puncak">
                 Malam puncak adalah rangkaian kedua dari FILAFEST dan menjadi
                 puncaknya acara diesnatalis FILKOM. Malam puncak adalah
                 rangkaian acara bertajuk music event mendatangkan guest star
@@ -152,26 +130,12 @@ export default class Landing extends Component {
             </Row>
             <Row>
               <Link to={"/chooseTicket"}>
-                <Button
-                  style={{
-                    marginTop: "10px",
-                    borderRadius: "20px",
-                    backgroundColor: "red",
-                    color: "white",
-                    fontWeight: "bold",
-                    float: "right"
-                  }}
-                >
-                  {"Cetak Tiket"}
-                </Button>
+                <Button className="btn-puncak">{"Cetak Tiket"}</Button>
               </Link>
             </Row>
           </Col>
-          <Col span={12} style={{ padding: "0px 5px" }}>
-            <Img
-              src="./asset/slider3.JPG"
-              style={{ width: "80%", float: "left", borderRadius: "7.5%" }}
-            />
+          <Col lg={12} style={{ padding: "0px 5px" }}>
+            <Img src="./asset/slider3.JPG" className="img-puncak" />
           </Col>
         </Row>
         <Row style={{ padding: "50px 50px" }} id={"informasi"}>
@@ -195,25 +159,26 @@ export default class Landing extends Component {
           )}
           {this.state.news.length != 0 &&
             this.state.news.map(data => {
-              return <Col xs={{ span: 16 }} lg={{ span: 6, offset: 1 }}>
-                <Card
-                  hoverable
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+              return (
+                <Col xs={{ span: 16 }} lg={{ span: 6, offset: 1 }}>
+                  <Card
+                    hoverable
+                    style={{ width: 300 }}
+                    cover={
+                      <img
+                        alt="example"
+                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      />
+                    }
+                  >
+                    <Meta
+                      title="Europe Street beat"
+                      description="www.instagram.com"
                     />
-                  }
-                >
-                  <Meta
-                    title="Europe Street beat"
-                    description="www.instagram.com"
-                  />
-                </Card>
-              </Col>;
+                  </Card>
+                </Col>
+              );
             })}
-
         </Row>
         <Row
           style={{
