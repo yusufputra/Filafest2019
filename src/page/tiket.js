@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Carousel, Row, Col, Button, Card } from "antd";
+import { Layout, Row, Col, Button, Card } from "antd";
 import { Link } from "react-router-dom";
 
 export default class Tiket extends Component {

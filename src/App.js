@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Layout, Menu, Breadcrumb, Icon } from "antd";
+import { Layout, Menu, Icon } from "antd";
 import { HashRouter, Route, Switch, Link } from "react-router-dom";
 import ReactModal from "react-modal";
 import "./App.css";
@@ -7,7 +7,7 @@ import "antd/dist/antd.css";
 import FormLoginComponent from "./component/FormLogin";
 import Landing from "./page/landing";
 import ButtonGroup from "antd/lib/button/button-group";
-import { AutoComplete, Input, Button, Popover } from "antd";
+import { Button, Popover } from "antd";
 import UserProvider, { UserContext } from "./UserProvider";
 import Tiket from "./page/tiket";
 import Tiiketku from "./page/tiketku";
@@ -220,7 +220,7 @@ class AppChildren extends React.PureComponent {
               </Switch>
             </Layout.Content>
             <Layout.Footer style={{ textAlign: "center" }}>
-              {"Developed with <3 by us"}
+              {"Developed PIT BEM FILKOM 2019"}
             </Layout.Footer>
           </Layout>
         </HashRouter>

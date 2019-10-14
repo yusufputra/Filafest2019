@@ -81,7 +81,7 @@ export default class Landing extends Component {
                   marginTop: "-12.5px"
                 }}
               >
-                20 November 2019
+                20 Oktober 2019
               </div>
             </h1>
             <div className="isi-sehat">

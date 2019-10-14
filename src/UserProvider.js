@@ -1,5 +1,4 @@
 import React, { createContext, PureComponent } from 'react';
-import axios from 'axios';
 export const UserContext = createContext();
 
 export default class UserProvider extends PureComponent {
