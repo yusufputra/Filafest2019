@@ -15,6 +15,9 @@ import News from "./page/news";
 import Barcode from "./page/barcode";
 import Profile from "./page/profile";
 import ConfirmTicket from "./page/confirmTicket";
+import Axios from "axios";
+import api from "./component/api";
+import Admin from "./page/Admin";
 export const AppContext = React.createContext();
 
 function App() {
@@ -49,6 +52,11 @@ class AppChildren extends React.PureComponent {
         <Link to="/myTicket">
           <div>{"TiketKu"}</div>
         </Link>
+        {this.props.context.level == 1 && (
+          <Link to="/admin">
+            <div>{"Panel Admin"}</div>
+          </Link>
+        )}
         <Link>
           <div>
             <a onClick={this.logOut}>{"Keluar akun"}</a>
@@ -57,9 +65,18 @@ class AppChildren extends React.PureComponent {
       </Fragment>
     );
   }
-  renderButton() {
-    console.log(this.props.context);
+  renderButton () {
     if (this.props.context.loggedIn) {
+      Axios(api.checkadmin,{
+        method:'POST',
+        headers: {
+          'authorization': 'bearer ' + localStorage.token
+        }
+      }).then(ress=>{
+        if(ress.data.status === true){
+          this.props.context.setLevel(ress.data.value[0].status)
+        }
+      })
       return (
         <ButtonGroup style={{ float: "right" }}>
           <Popover
@@ -174,7 +191,8 @@ class AppChildren extends React.PureComponent {
               onRequestClose={this.handleCancel}
               style={{
                 overlay: {
-                  backgroundColor: "rgba(0,0,0,0.7)"
+                  backgroundColor: "rgba(0,0,0,0.7)",
+                  zIndex: 2
                 },
                 content: {
                   borderRadius: "8px",
@@ -212,6 +230,7 @@ class AppChildren extends React.PureComponent {
                 <Route path="/profile" component={Profile} />
                 <Route path="/news" component={News} />
                 <Route path="/confirmTicket" component={ConfirmTicket} />
+                <Route path="/admin" component={Admin}/>
                 <Route
                   path="/generateBarcode"
                   component={Barcode}

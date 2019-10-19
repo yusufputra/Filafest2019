@@ -9,10 +9,12 @@
     "qrcode-react": "^0.1.16",
     "qrcode.react": "^0.9.3",
     "react": "^16.9.0",
+    "react-csv": "^1.1.1",
     "react-dom": "^16.9.0",
     "react-image": "^2.2.0",
     "react-modal": "^3.10.1",
     "react-native-base64": "0.0.2",
+    "react-qr-reader": "^2.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "serve": "^11.2.0"

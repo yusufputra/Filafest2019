@@ -10,6 +10,7 @@ export default class UserProvider extends PureComponent {
 		fakultas: undefined,
 		jurusan: undefined,
 		prodi:undefined,
+		level:0,
 		setLoggedIn: () => {
 			this.state.loggedIn = true;
 			this.forceUpdate();
@@ -28,6 +29,10 @@ export default class UserProvider extends PureComponent {
 			else {
 				this.state.loggedIn=false;
 			}
+		},
+		setLevel: (level) =>{
+			this.setState({level:level});
+			this.forceUpdate();
 		}
 
 		

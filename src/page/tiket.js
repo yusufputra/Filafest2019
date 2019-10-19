@@ -1,8 +1,36 @@
 import React, { Component } from "react";
 import { Layout, Row, Col, Button, Card } from "antd";
 import { Link } from "react-router-dom";
+import Axios from 'axios';
 
 export default class Tiket extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     data: 0,
+  //     closed: true
+  //   };
+  // }
+  // componentDidMount() {
+  //   Axios.post(
+  //     "https://backend-bem.herokuapp.com/api/web/protected/getAllTiket",
+  //     {},
+  //     {
+  //       headers: {
+  //         authorization: "bearer " + localStorage.token
+  //       }
+  //     }
+  //   )
+  //     .then(ress => {
+  //       console.log(ress)
+  //       this.setState({ data: ress.data.length, loading: false });
+  //     }).then(()=>{
+  //       this.setState({closed:(this.state.data >= 285)})
+  //     })
+  //     .catch(error => {
+  //       alert(error);
+  //     });
+  // }
   render() {
     const { Meta } = Card;
     return (
@@ -41,7 +69,7 @@ export default class Tiket extends Component {
                     <Link to={"/confirmTicket"}>
                     <Button
                       type={'danger'}
-                      
+                      // disabled={this.state.closed}
                       onClick={()=>{
                         localStorage.kind = 'jalansehat2019'
                       }}
@@ -50,6 +78,7 @@ export default class Tiket extends Component {
                           fontWeight: "bold",
                         }}
                       >
+                        {/* {(this.state.data === 0) && ("Loading...") || (this.state.closed) === true && ("Closed")||(this.state.closed) === false && ("Get Ticket")} */}
                         {"Get Ticket"}
                       </Button>
                     </Link>
